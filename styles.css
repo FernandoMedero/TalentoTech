@@ -1,0 +1,174 @@
+/*Google fonts*/
+
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Sour Gummy", sans-serif;
+  background-color: #f3e7ff;
+  color: #333;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+header {
+  background-color: #a368ed;
+  font-family: "Doto", sans-serif;
+  padding-left: 5vw;
+  padding-right: 5vw;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0%;
+}
+h2,
+footer {
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5vw;
+}
+.flex-menu {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  padding: 1vw 1vw;
+  border-radius: 5px;
+  grid-column: 1 / 3;
+}
+
+.flex-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.flex-menu li {
+  margin-right: 1vw;
+}
+
+.flex-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 1vw 1vw;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.flex-menu a:hover {
+  background-color: #555;
+}
+.header,
+.footer {
+  grid-column: 1 / 3;
+}
+.main {
+  grid-column: 2 / 3;
+}
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2vw;
+}
+.producto {
+  background-color: #2196f3;
+  color: white;
+  padding: 2vw;
+  margin: 1vw;
+  flex: 1 1 5vw;
+  box-sizing: border-box;
+}
+
+.video {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  width: 50vw;
+  height: 30vw;
+}
+
+footer {
+  background-color: #a368ed;
+  font-size: larger;
+  font-family: monospace;
+}
+
+@media only screen and (min-width: 601px) {
+  #Contacto {
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #d1c3e2;
+    font-family: "Caveat";
+    font-size: large;
+    flex-direction: row;
+    width: 100%;
+    padding: 3%;
+    border-radius: 8px;
+  }
+  #logo {
+    width: 15vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #Contacto {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #d1c3e2;
+    font-family: "Caveat";
+    font-size: large;
+    flex-direction: row;
+    width: 98%;
+    padding-right: 3%;
+    border-radius: 8px;
+  }
+  #logo {
+    width: 35vw;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding-top: 1vw;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 1vw 1vw;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+}

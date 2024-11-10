@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/c
+ss/all.min.css">
+  <title>Front End JS</title>
+</head>
+
+<body>
+
+  <div class="grid-container">
+
+    <header class="header">
+      <img src="img/Logo.png" id="logo"
+        alt="Imagen de logo, el cual dice Feria Digital con la F de feria mas grande y en color naranja y la D de digital tambien mas grande y en color naranja. Todo lo demas en letras mas pequeñas y en color azul"></img>
+      <h1>Tu fiesta, tu dinero, tus deseos...</h1>
+    </header>
+
+    <div class="flex-menu">
+      <ul>
+        <li>
+          <a href="#Nosotros"><strong>Nosotros</strong> </a>
+        </li>
+        <li>
+          <a href="#Productos"><strong>Productos</strong> </a>
+        </li>
+        <li>
+          <a href="#Contacto"><strong>Contacto</strong> </a>
+        </li>
+      </ul>
+      </nav>
+    </div>
+
+    <section id="Nosotros">
+      <h2>Míranos en acción!!!</h2>
+      <video controls poster="/img/logo.png" class="video">
+        <source src="img/video.mp4" type="video/mp4">
+        <track src="img/subtitulos.vtt" kind="subtitles" srclang="es" label="Español">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </section>
+
+    <main class="main">
+      <section id="Productos">
+        <h2>¿Qué te gustaría para tu fiesta?</h2>
+        <section class="productos">
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-regular fa-futbol"></i> METEGOL </h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-solid fa-meteor"></i> POOL</h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-solid fa-table-tennis-paddle-ball"></i> PING-PONG</h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-brands fa-fort-awesome"></i> INFLABLES</h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-regular fa-user"></i> ANIMACIÓN</h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-brands fa-squarespace"></i> PLAZA BLANDA</h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-solid fa-horse"></i> TORO MECÁNICO</h2>
+            <a href=""></a>
+          </div>
+          <div class="producto">
+            <img src="" alt="">
+            <h2><i class="fa-regular fa-lightbulb"></i> LUCES Y SONIDO</h2>
+            <a href=""></a>
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <section id="Contacto">
+      <h2><strong>Vos nos preguntas, nosotros respondemos</strong> <i class="fa-regular fa-face-smile"></i></h2>
+      <form action="https://formspree.io/f/xblrnave" method="POST">
+        <div class="separacion">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="separacion">
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" rows="10" cols="100" required></textarea>
+          <button type="submit">Enviar</button>
+        </div>
+
+      </form>
+    </section>
+
+
+    <footer class="footer">
+      <p>© 2024 Mi Sitio Web. Todos los derechos reservados. <i class="fa-solid fa-eye"></i> que con los secretos no soy
+        tan reservado. <i class="fa-regular fa-face-laugh-squint"></i></p>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
