@@ -6,10 +6,10 @@
 
 body {
   font-family: "Sour Gummy", sans-serif;
-  background-color: #f3e7ff;
+  background-color: #ffffff;
   color: #333;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 header {
@@ -22,105 +22,113 @@ header {
   margin-bottom: 20px;
 }
 
-h1 {
-  margin: 0%;
-}
-h2,
-footer {
+h2, footer {
   text-align: center;
 }
 
 .bg-custom{
   background-color: #a368ed;
 }
+
 .navbar-nav .nav-link {
-  color: white !important; /* Cambia el color del texto de los enlaces */
+  color: white !important; 
 }
 
 .navbar-brand {
-  color: white !important; /* Cambia el color del texto del logo */
+  color: white !important;
 }
-
 
 /*GRID*/
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columnas de igual tamaño */
-  grid-template-rows: auto auto auto; /* Tres filas con altura automática */
-  grid-gap: 10px; /* Espacio entre las celdas */
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: auto auto auto; 
+  grid-gap: 10px; 
 }
-
 /* Fila 1: dos columnas */
 .row1 {
-  grid-column: span 1; /* Esto hace que ocupe ambas columnas */
+  grid-column: span 1; 
 }
-
-/* Fila 2: una columna que ocupe todo el ancho */
+/* Fila 2: una columna */
 .row2 {
-  grid-column: span 2; /* Esto hace que ocupe ambas columnas */
+  grid-column: span 2; 
 }
-
 /* Fila 3: dos columnas */
 .row3 {
   display: flex;
-  justify-content: center;    /* Centra los elementos horizontalmente */
+  justify-content: center;    
   align-items: center;  
- /* grid-template-columns: auto auto;  /* Dos columnas que ocupan el 50% del ancho cada una */
- /* grid-column: span 1;*/
 }
 
-.flex-menu {
-  display: flex;
-  justify-content: center;
-  background-color: #333;
-  padding: 1vw 1vw;
-  border-radius: 5px;
-  grid-column: 1 / 3;
-}
-
-.flex-menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.flex-menu li {
-  margin-right: 1vw;
-}
-
-.flex-menu a {
-  color: white;
-  text-decoration: none;
-  padding: 1vw 1vw;
-  border-radius: 3px;
-  transition: background-color 0.3s ease;
-}
-
-.flex-menu a:hover {
-  background-color: #555;
-}
-.header,
-.footer {
+.header,.footer {
   grid-column: 1 / 3;
 }
 .main {
   grid-column: 2 / 3;
 }
 
-.productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 2vw;
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+  gap: 15px; 
+  padding: 10px;
 }
-.producto {
-  background-color: #2196f3;
+.card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.card img {
+  width: auto;
+  height: 220px;
+  border-radius: 8px;
+}
+.card button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
-  padding: 2vw;
-  margin: 1vw;
-  flex: 1 1 5vw;
-  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.card button:hover {
+  background-color: #0056b3;
+}
+.btn {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.quantity {
+  margin-top: 5px;
+  padding: 5px;
+  width: 50px;
+}
+@media (max-width: 1200px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas para pantallas medianas */
+  }
+}
+
+@media (max-width: 800px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 500px) {
+  .card-container {
+    grid-template-columns: 1fr; /* Una columna para pantallas muy pequeñas */
+  }
 }
 
 footer {
@@ -181,13 +189,10 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 textarea {
   resize: vertical;
 }
-
 button {
- /* padding: 1vw 1vw;*/
   background-color: #4caf50;
   color: white;
   border: none;
@@ -196,7 +201,52 @@ button {
   margin-top: 5px;
   width: 100%;
 }
-
 button:hover {
   background-color: #45a049;
+}
+
+video{
+  height: 300px;
+  width: auto;
+}
+/* Estilo para el modal */
+#modal {
+  display: none; 
+  position: fixed;
+  top: center;
+  left: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 9999; 
+  box-sizing: border-box;
+  display: flex; 
+  padding: 10px; 
+  overflow: hidden; 
+}
+
+#modalImage {
+  width: auto;
+  height: 80%; 
+  max-width: 90%; 
+  max-height: 90%; 
+  object-fit: contain; 
+  border: 2px solid white; 
+  border-radius: 10px;
+  margin: auto; 
+}
+
+
+
+
+/* Botón de cierre */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
 }
