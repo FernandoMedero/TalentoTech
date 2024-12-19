@@ -20,6 +20,10 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  align-items: center;
+  padding: 20px;
+
+  border-bottom: 2px solid #ddd;
 }
 
 h2, footer {
@@ -107,11 +111,17 @@ h2, footer {
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  width: 80px;
 }
 .quantity {
   margin-top: 5px;
   padding: 5px;
   width: 50px;
+}
+.precio {
+  margin-top: 5px;
+  padding: 5px;
+  width: 100px;
 }
 @media (max-width: 1200px) {
   .card-container {
@@ -192,7 +202,7 @@ textarea {
 textarea {
   resize: vertical;
 }
-button {
+#btContacto {
   background-color: #4caf50;
   color: white;
   border: none;
@@ -201,7 +211,7 @@ button {
   margin-top: 5px;
   width: 100%;
 }
-button:hover {
+#btContacto:hover {
   background-color: #45a049;
 }
 
@@ -249,4 +259,155 @@ video{
   font-size: 40px;
   color: white;
   cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para el contenedor del carrito */
+#cart-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Cambio de cursor para que parezca un clickeable */
+}
+
+/* Estilos para el ícono del carrito */
+#cart-container i {
+  font-size: 50px; /* Tamaño del ícono */
+  color: #333; /* Color del ícono */
+  transition: color 0.3s ease-in-out; /* Animación de transición */
+}
+
+#cart-container i:hover {
+  color: #007bff; /* Cambia el color al pasar el ratón */
+}
+
+/* Estilos para el contador de artículos */
+#cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red; /* Color de fondo del contador */
+  color: white; /* Color del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  font-weight: bold; /* Hacer el texto más destacado */
+  border-radius: 50%; /* Forma circular */
+  padding: 5px 10px; /* Espaciado dentro del círculo */
+  min-width: 20px; /* Asegurarse de que el contador tenga un tamaño mínimo */
+  text-align: center; /* Centrar el texto */
+}
+#btCarro{
+  background-color: #a368ed;
+  border: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos del modal */
+.modal {
+  display: none; /* Inicialmente cerrado */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+  justify-content: center;
+  align-items: center;
+}
+
+#cartContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  max-height: 80%;
+  overflow-y: auto; /* Para hacer scroll si es necesario */
+}
+
+#cartTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#cartTable th, #cartTable td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#cartTable th {
+  background-color: #f4f4f4;
+}
+
+#cartItems input {
+  width: 50px;
+  text-align: center;
+}
+
+#totalPrice {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.btnAzul {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#checkoutBtn:hover {
+  background-color: #0056b3;
+}
+
+.close {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff0000;
+}
+
+
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
 }

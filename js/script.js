@@ -1,37 +1,46 @@
 const modal = document.getElementById("imageModal");
 const modalImage = document.getElementById("modalImage");
 const closeModal = document.getElementById("closeModal");
-//pagina lista
-window.onload = function () {
-  cargarCards();
-};
+const cartModal = document.getElementById("cartModal");
+const closeCartModal = document.getElementById("closeCartModal");
+let pagina = 0;
 
-function cargarCards() {
+//pagina lista
+document.addEventListener("DOMContentLoaded", function () {
+  obtenerProductos(pagina);
+  actualizarContadorCarrito();
+});
+
+//productos desde la API
+async function obtenerProductos(pagina) {
   const cardContainer = document.getElementById("cardContainer");
-  for (let i = 0; i < 10; i++) {
-    const imageSrc = `https://picsum.photos/200/300?random=${i + 1}`;
-    const defaultQuantity = 1;
-    const buttonText = "Agregar al carrito";
-    const titulo = "Producto " + (i + 1);
-    // Crear una tarjeta
+  try {
+  const response = await
+  fetch("https://dummyjson.com/products?limit=6&skip=" + pagina + "&select=title,price,thumbnail");
+  const data = await response.json();
+  data.products.forEach(producto => {
+    const buttonText = '<i class="fa fa-cart-plus" aria-hidden="true"></i>';
     const card = crearCard(
-      titulo,
-      imageSrc,
-      defaultQuantity,
+      producto.title,
+      producto.thumbnail,
+      producto.price,
       buttonText,
-      i + 1
+      producto.id
     );
     cardContainer.appendChild(card); // Añadir la tarjeta al contenedor
+  });
+  } catch (error) {
+  alert("Error al obtener productos:", error);
   }
-}
+  }
 
-function crearCard(title, imageSrc, defaultQuantity = 1, buttonText, id) {
+function crearCard(title, imageSrc, valor, buttonText, id) {
   //crea tarjeta
   const card = document.createElement("div");
   card.classList.add("card");
   //titulo
-  const cardTitle = document.createElement("h3");
-  cardTitle.innerText = title; 
+  const nombre = document.createElement("h3");
+  nombre.innerText = title;
   //imagen
   const img = document.createElement("img");
   img.src = imageSrc;
@@ -40,34 +49,41 @@ function crearCard(title, imageSrc, defaultQuantity = 1, buttonText, id) {
   info.classList.add("info");
   info.style.display = "flex";
   info.style.alignItems = "center";
-  info.style.gap = "10px"; 
+  info.style.gap = "10px";
   //cantidad
   const quantityInput = document.createElement("input");
   quantityInput.classList.add("quantity");
   quantityInput.type = "number";
   quantityInput.min = 1;
-  quantityInput.value = defaultQuantity; 
-  quantityInput.style.width = "60px"; 
+  quantityInput.value = 1;
+  quantityInput.style.width = "60px";
   //boton
   const addToCartBtn = document.createElement("button");
   addToCartBtn.classList.add("btn");
-  addToCartBtn.innerText = buttonText; 
-  //eventos de boton
+  addToCartBtn.innerHTML   = buttonText;
+  //precio
+  const precio = document.createElement("h6");
+  precio.classList.add("precio");
+  precio.type = "number";
+  precio.innerHTML   = "$ " + valor;
+    //eventos de boton
   addToCartBtn.addEventListener("click", function (event) {
-    event.stopPropagation(); 
+    event.stopPropagation();
     const quantity = quantityInput.value;
-    alert(`Producto ${id} agregado al carrito con ${quantity} unidades.`);
+    agregarProducto(id, quantity, valor, title);
+    //alert(`Producto ${id} agregado al carrito con ${quantity} unidades.`);
   });
 
   info.appendChild(quantityInput);
   info.appendChild(addToCartBtn);
-  card.appendChild(cardTitle); 
+  info.appendChild(precio);
+  card.appendChild(nombre);
   card.appendChild(img);
   card.appendChild(info);
-  
+
   card.addEventListener("click", function (event) {
     modal.style.display = "flex";
-    modalImage.src = img.src; 
+    modalImage.src = img.src;
   });
   // Agregar evento de clic a la imagen para abrir el modal
   img.addEventListener("click", function (event) {
@@ -82,14 +98,69 @@ function crearCard(title, imageSrc, defaultQuantity = 1, buttonText, id) {
   return card;
 }
 
-// Función para cerrar el modal
+// cerrar el modal
 closeModal.addEventListener("click", function () {
-  modal.style.display = "none"; // Ocultar el modal
+  modal.style.display = "none"; 
 });
 
-// Cerrar el modal al hacer clic fuera de la imagen
 window.addEventListener("click", function (event) {
   if (event.target === modal) {
     modal.style.display = "none"; // Ocultar el modal si se hace clic fuera de la imagen
   }
 });
+
+function agregarProducto(id, cantidad, precio, nombre) {
+  var producto = {
+    id,
+    cantidad,
+    precio,
+    nombre,
+  };
+  
+  if(carrito.length > 0){
+    let agregar = true;
+     carrito.forEach(item => {
+    if(producto.id === item.id){
+        item.cantidad = parseInt(item.cantidad) + parseInt(producto.cantidad); // mismo producto suma la cantidad
+        agregar = false;
+      }
+  });
+  if(agregar){
+    carrito.push(producto); // no estaba en el carrito lo agrega
+  }
+  }
+  else{
+    carrito.push(producto); //si el carro estaba vacio agrega producto
+  }
+  
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarContadorCarrito();
+}
+
+btCarro.addEventListener("click", function () {
+    mostrarCarrito();
+  });
+
+btMasProd.addEventListener("click",function (){
+  obtenerProductos(pagina = pagina + 6);
+});
+
+  // cerrar el modal
+closeCartModal.addEventListener("click", function() {
+    cartModal.style.display = "none";
+  });
+  
+  // Cerrar el modal al hacer clic afuera 
+  window.addEventListener("click", function(event) {
+    if (event.target === cartModal) {
+      cartModal.style.display = "none";
+    }
+  });
+
+  checkoutBtn.addEventListener("click", function(){
+    alert("Carrito Finalizado");
+    localStorage.clear();
+    carrito = [];
+    cartCount.textContent = carrito.length;
+    closeCartModal.click();
+  });
